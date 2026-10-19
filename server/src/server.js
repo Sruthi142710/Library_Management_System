@@ -1,3 +1,4 @@
+const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -7,7 +8,14 @@ require("dotenv").config({
 });
 
 const app = express();
+app.use(cors({
+  origin: "https://booknest-frontend-hrej.onrender.com",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type"]
+}));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
