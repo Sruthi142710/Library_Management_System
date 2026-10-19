@@ -1,5 +1,6 @@
 async function call(path, { method = 'GET', body } = {}) {
   const isForm = body instanceof FormData;
+  const API_BASE = 'https://booknest-backend-m644.onrender.com';
   const res = await fetch('/api' + path, {
     method,
     headers: isForm ? {} : { 'Content-Type': 'application/json' },
